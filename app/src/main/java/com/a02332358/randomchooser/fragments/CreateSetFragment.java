@@ -1,4 +1,4 @@
-package com.a02332358.randomchooser;
+package com.a02332358.randomchooser.fragments;
 
 import android.os.Bundle;
 import android.view.View;
@@ -9,6 +9,7 @@ import androidx.appcompat.widget.AppCompatTextView;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.a02332358.randomchooser.R;
 import com.a02332358.randomchooser.viewmodels.SetsViewModel;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;

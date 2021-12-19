@@ -1,4 +1,4 @@
-package com.a02332358.randomchooser;
+package com.a02332358.randomchooser.fragments;
 
 import android.os.Bundle;
 import android.view.View;
@@ -12,6 +12,8 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.a02332358.randomchooser.GroupsAdapter;
+import com.a02332358.randomchooser.R;
 import com.a02332358.randomchooser.viewmodels.SetsViewModel;
 
 public class DisplaySetFragment extends Fragment {
@@ -37,9 +39,9 @@ public class DisplaySetFragment extends Fragment {
             @Override
             public void onChanged(ObservableList sender) {
                 getActivity().runOnUiThread(() ->{
+                    groupsAdapter.notifyDataSetChanged();
 
                 });
-                groupsAdapter.notifyDataSetChanged();
             }
 
             @Override
