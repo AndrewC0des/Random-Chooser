@@ -12,9 +12,16 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.a02332358.randomchooser.ItemsAdapter;
+import com.a02332358.randomchooser.MainActivity;
 import com.a02332358.randomchooser.R;
 import com.a02332358.randomchooser.fragments.CreateSetFragment;
 import com.a02332358.randomchooser.viewmodels.SetsViewModel;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 
 import java.util.Random;
 
@@ -61,5 +68,21 @@ public class singleGroupFragment extends Fragment {
             random.setText("Random item: " + arrItems[index]);
         });
 
+
+        final TextView jokeText = (TextView)view.findViewById(R.id.jokeTextView);
+        RequestQueue queue = Volley.newRequestQueue(getActivity());
+        String url ="https://v2.jokeapi.dev/joke/Programming?blacklistFlags=nsfw,religious,political,racist,sexist,explicit&format=txt";
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                jokeText.setText(response);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                jokeText.setText("Something went wrong");
+            }
+        });
+        queue.add(stringRequest);
     }
 }
